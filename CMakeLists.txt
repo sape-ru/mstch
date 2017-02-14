@@ -8,7 +8,10 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_INCLUDE_CURRENT_DIR_IN_INTERFACE ON)
 set(CMAKE_BUILD_TYPE Release)
 
-set(mstch_VERSION 1.0.1)
+set(mstch_VERSION_MAJOR 1)
+set(mstch_VERSION_MINOR 0)
+set(mstch_VERSION_PATCH 1)
+set(mstch_VERSION "${mstch_VERSION_MAJOR}.${mstch_VERSION_MINOR}.${mstch_VERSION_PATCH}")
 
 if(NOT MSVC)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wall -Wextra -O3")

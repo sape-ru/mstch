@@ -22,12 +22,18 @@ set(SRC
     token.cpp
     utils.cpp)
 
-add_library(mstch STATIC ${SRC})
-
-set_property(TARGET mstch PROPERTY VERSION ${mstch_VERSION})
+add_library(mstch_OBJLIB OBJECT ${SRC})
+set_target_properties(mstch_OBJLIB PROPERTIES POSITION_INDEPENDENT_CODE 1)
+add_library(mstch SHARED $<TARGET_OBJECTS:mstch_OBJLIB>)
+add_library(mstch_static STATIC $<TARGET_OBJECTS:mstch_OBJLIB> )
+set_target_properties(mstch_static PROPERTIES OUTPUT_NAME mstch)
+set_target_properties(mstch PROPERTIES VERSION ${mstch_VERSION} SOVERSION ${mstch_VERSION_MAJOR})
+set_target_properties(mstch_static PROPERTIES VERSION ${mstch_VERSION})
+target_link_libraries(mstch ${Boost_LIBRARIES})
+target_link_libraries(mstch_static ${Boost_LIBRARIES})
 
 install(
-    TARGETS mstch EXPORT mstchTargets
+    TARGETS mstch mstch_static EXPORT mstchTargets
     LIBRARY DESTINATION lib
     ARCHIVE DESTINATION lib)
 

@@ -1,0 +1,14 @@
+Source: libmstch
+Priority: extra
+Maintainer: Sergey kablov <s.kablov@sape.ru>
+Standards-Version: 3.8.4
+Build-Depends: libboost-dev
+Section: libs
+Homepage: https://github.com/sape-ru/mstch.git
+
+Package: libmstch
+Section: libdevel
+Architecture: any
+Depends: ${shlibs:Depends}
+Description: mstch C++ headers and librares
+
